@@ -8,13 +8,11 @@ class cTablero
         cTablero();
         ~cTablero();
         void inicializarCasillas();
-        void inicializarJugadores();
         void crearCasillas();
 
     private:
         //Atributos
-        cCasilla *casillas[12];
-        cPersonaje *jugadores[4];
+        cCasilla *casillas[10];
         //Metodos
         void casillaOca();
         void casillaPuente();
@@ -25,6 +23,7 @@ class cTablero
         void casillaDados();
         void casillaMuerte();
         void casillaFinal();
+        void casillaNormal();
 
 };
 

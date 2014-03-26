@@ -19,4 +19,5 @@ public:
     int getPosiciones();
     cCasilla();
     cCasilla(int, int, bool, bool, int);
-}
+};
+#endif CCASILLA_H_

@@ -13,11 +13,15 @@ cPersonaje::cPersonaje(string name){
 int cPersonaje::getPosicion(){
     return posicion;
 }
+int cPersonaje::getNombre(){
+	return nombre;
+}
 
 int cPersonaje::tirarDado(){
     int random= rand()%6;
 }
-void cPersonaje::moverPosicion{
+void cPersonaje::moverPosicion(){
     int random=this->tirarDado();
-    posicion+= ranndom;
+    cout << "Has sacado un : "<< random<<endl;
+    posicion+= random;
 }

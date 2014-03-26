@@ -10,7 +10,7 @@ class cPersonaje
         cPersonaje();
         cPersonaje(string);
         ~cPersonaje();
-
+        int getNombre();
         int getPosicion();
         void moverPosicion();
 

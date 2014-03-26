@@ -24,9 +24,11 @@ int main() {
 		tablero.crearCasillas();
 
 		//LE DAMOS AL BUCLE DEL INFIERNO
+		int input = 1;
+		int turno=0;
 		do{
-			int input = 1;
-			
+			cout<< "Turno de "<< personajes[turno]->getNombre(); << "!"<<endl;
+
 
 		}while(input!=0);
 	}

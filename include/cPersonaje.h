@@ -8,6 +8,7 @@ class cPersonaje
 {
     public:
         cPersonaje();
+        cPersonaje(string);
         ~cPersonaje();
 
         int getPosicion();
@@ -16,6 +17,7 @@ class cPersonaje
     private:
         int posicion;
         int tirarDado();
+        string nombre;
 };
 
 #endif // CPERSONAJE_H

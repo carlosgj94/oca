@@ -1,3 +1,4 @@
+#include "cCasilla.h"
 #ifndef CTABLERO_H
 #define CTABLERO_H
 
@@ -7,8 +8,8 @@ class cTablero
     public:
         cTablero();
         ~cTablero();
-        void inicializarCasillas();
-        void crearCasillas();
+        void inicializarCasillas();//inicializa a NEW las *casillas[10]
+        void crearCasillas();// crea cada tipo de casillas
 
     private:
         //Atributos

@@ -5,6 +5,11 @@ cPersonaje::cPersonaje()
     posicion=0;
 }
 
+cPersonaje::cPersonaje(string name){
+	posicion=0;
+	nombre=name;
+}
+
 int cPersonaje::getPosicion(){
     return posicion;
 }

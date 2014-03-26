@@ -7,7 +7,7 @@ cTablero::cTablero()
         casillas[i]= NULL;
     }
 }
-cTablero::inicializarCasillas(){
+void cTablero::inicializarCasillas(){
     int i=0;
     for(i; i<10; i++){
         casillas[i]= new cCasilla;

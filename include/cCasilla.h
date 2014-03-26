@@ -1,8 +1,8 @@
 #ifndef CCASILLA_H_
 #define CCASILLA_H_
 #include <iostream>
+#include <cstdlib>
 using namespace std;
-
 class cCasilla{
 private:
     int cambiarPosicion; //Te suma un int a la pos

@@ -23,6 +23,12 @@ int main() {
 		tablero.inicializarCasillas();
 		tablero.crearCasillas();
 
+		//LE DAMOS AL BUCLE DEL INFIERNO
+		do{
+			int input = 1;
+			
+
+		}while(input!=0);
 	}
 	return 0;
 }

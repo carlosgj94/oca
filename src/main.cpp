@@ -6,7 +6,7 @@ int main() {
 	cout << "Introduzca el numero de personajes: "<< endl;
 	cin >> numPersonajes;
 	if(numPersonajes==0){
-		cout<<"No se puede jugar con 0 jugadores"; //HACER ALGO PARA QUE SALGA SI SON 0 JUGADORES
+		cout<<"No se puede jugar con 0 jugadores"; 
 	}
 	//EMPIEZA EL JUEGO
 	else{
@@ -26,8 +26,15 @@ int main() {
 		//LE DAMOS AL BUCLE DEL INFIERNO
 		int input = 1;
 		int turno=0;
+		int posicion;
 		do{
 			cout<< "Turno de "<< personajes[turno]->getNombre(); << "!"<<endl;
+			cout<<"Presiona intro para tirar dado... "<<endl;
+			cin.get();
+			personajes[turno]->moverPosicion();
+			posicion = personajes[turno]->getPosicion();
+			cout<<"Ahoras estas en la posicion: "<< posicion <<endl;
+			
 
 
 		}while(input!=0);

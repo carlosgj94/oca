@@ -13,9 +13,12 @@ class cPersonaje
         int getNombre();
         int getPosicion();
         void moverPosicion();
+        int getTurnosDetenido();
+        void setTurnosDetenido(int);
 
     private:
         int posicion;
+        int turnosDetenido;
         int tirarDado();
         string nombre;
 };

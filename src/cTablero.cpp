@@ -28,7 +28,7 @@ void cTablero::crearCasillas(){
 }
 
 void cTablero::casillaNormal(){
-    int posiciones{1, 2, 3, 4, 7, 8, 9, 10, 11, 13, 15, 16, 17, 20, 21, 22, 24, 25, 28, 29, 30, 33, 34, 35, 37, 38, 39, 40, 43, 44, 46, 47, 48, 49, 51, 55, 56, 57, 58, 60, 61, 62};
+    int posiciones[42]={1, 2, 3, 4, 7, 8, 9, 10, 11, 13 , 15, 16, 17, 20, 21, 22, 24, 25, 28, 29 , 30, 33, 34, 35, 37, 38, 39, 40, 43, 44 , 46, 47, 48, 49, 51, 55, 56, 57, 58, 60, 61, 62};
     cCasilla normal(0, 0, false, false, posiciones);
     casilla[0]= normal;
 }
@@ -48,44 +48,62 @@ void cTablero::casillaPuente(){//Tambien puede mover negativo CAMBIAR!!!!
 }
 
 void cTablero::casillaPosoda(){
-    int posiciones= {19};
+    int posiciones[1]= {19};
     cCasilla posada(0, 1, false, false, posiciones);
     casilla[3]= posada;
 }
 
 void cTablero::casillaPozo(){
-    int posiciones= {31};
+    int posiciones[1]= {31};
     cCasilla pozo(0, 10, false, false, posiciones);
     casilla[4]=pozo;
 }
 
 void cTablero::casillaLaberinto(){//NO retrocede 30, sino que te lleva a la treinta
-    int posiciones={42};
+    int posiciones[1]={42};
     cCasilla laberinto(-30, 0, false, false, posiciones);
     casilla[5]= laberinto;
 }
 
 void cTablero::casillaCarcel(){
-    int posiciones = {52};
+    int posiciones[1] = {52};
     cCasilla carcel(0, 3, false, false, posiciones);
     casilla[6]=  carcel;
 }
 
 void cTablero::casillaDados(){//DE DADO A DADO Y TIRO PORQUE ME HA TOCADO, NO SOLO AVANZAS X
-    int posiciones={26, 53};
+    int posiciones[2]={26, 53};
     cCasilla dados(26, 0, true, false, posiciones);
     casilla[7]= dados;
 }
 
 void cTablero::casillaMuerte(){
-    int posiciones{58}; 
+    int posiciones[2]={58}; 
     cCasilla muerte(-58, 0, false, false, posiciones);
     casilla[8]= muerte;
 }
 
 void cTablero::casillaFinal(){
-    int posiciones{63};
+    int posiciones[1]={63};
     cCasilla final(0, 0, false true, posiciones);
     casilla[9] = final;
 }
 
+cCasilla cTablero::buscarPosicion(int posicionActual){
+    int encontrado=0;
+    int i=0;
+    do{
+        if(posicionActual==casilla[i]->getPosiciones()){
+            encontrado=1;
+            i--;
+        }
+        i++;
+    } while (encontrado!=0 && i<10);
+    int cambioPosicion = casilla[i]->getCambiarPosicion();
+    int detener=casilla[i]->getDetenerTurno();
+    int seguir=casilla[i]->getSeguirTurno();
+    int ganar=casilla[i]->getGanadora();
+    int posiciones[1]= {posicionActual};
+    cCasilla casillaActual(cambioPosicion, detener, seguir, ganar, posiciones);
+    return casillaActual;    
+}

@@ -9,9 +9,10 @@ private:
     int detenerTurno; // Detiene turno X veces
     bool seguirTurno; //Mantiene tu turno 1 vez mas
     bool ganadora; //Se describe sola
-    int posiciones[41];
+    int posiciones[42];
 
 public:
+    cCasilla operator = (cCasilla);
     int getcambiarPosicion();
     int getDetenerTurno();
     int getSeguirTurno();

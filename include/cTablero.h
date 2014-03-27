@@ -10,6 +10,7 @@ class cTablero
         ~cTablero();
         void inicializarCasillas();//inicializa a NEW las *casillas[10]
         void crearCasillas();// crea cada tipo de casillas
+        cCasilla buscarPosicion(int);
 
     private:
         //Atributos

@@ -36,6 +36,8 @@ int main() {
 			personajes[turno]->moverPosicion();
 			posicion = personajes[turno]->getPosicion();
 			cout<<"Ahoras estas en la posicion: "<< posicion <<endl;
+
+			//Empieza la busqueda de colisiones con las casillas
 			casilla = tablero.buscarCasilla(posicion);
 			int cambioPosicion = casilla.getCambiarPosicion();
     		int detener=casilla.getDetenerTurno();
@@ -47,6 +49,24 @@ int main() {
     			cout<<"La partida ha durado: "<<input<<" turnos"<<endl;
     			input=0;
     		}
+    		if(seguir==true){
+    			cout<<"Te vuelve a tocar "<<personajes[turno]->getNombre()<<endl;
+    			turno--;
+    		}
+    		if(detener!=0){
+    			personajes[turno]->setTurnosDetenido(detener);
+    			cout<<"Estas detenido "<<detenido<< " turnos."<<endl;
+    		}
+    		if(cambioPosicion!=0){
+    			personajes[turno]->setPosicion(cambioPosicion);
+    			cout<<"Has sido movido a la casilla "<<  personajes[turno]->getPosicion()<<endl;
+    		}
+
+    		//Cambio de turno al siguiente jugador
+    		turno++;
+    		if(turno=>numPersonajes)
+    			turno=0;
+    		else turno++;
 
 		}while(input!=0);
 	}

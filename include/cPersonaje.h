@@ -12,6 +12,7 @@ class cPersonaje
         ~cPersonaje();
         int getNombre();
         int getPosicion();
+        void setPosicion(int);
         void moverPosicion();
         int getTurnosDetenido();
         void setTurnosDetenido(int);

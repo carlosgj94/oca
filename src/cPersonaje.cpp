@@ -33,3 +33,7 @@ void cPersonaje::moverPosicion(){
     cout << "Has sacado un : "<< random<<endl;
     posicion+= random;
 }
+
+void cPersonaje::setPosicion(int num){
+	posicion+=num;
+}

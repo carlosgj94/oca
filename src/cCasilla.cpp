@@ -8,7 +8,7 @@ cCasilla::cCasilla() {
     ganadora=false;
 
     for(int i=0; i<40; i++){
-        posiciones[i]=NULL;
+        posiciones[i]=0;
     }
 }
 cCasilla::cCasilla(int pos, int dTurno, bool sTurno, bool ganar, int posicion[] ){
@@ -21,7 +21,7 @@ cCasilla::cCasilla(int pos, int dTurno, bool sTurno, bool ganar, int posicion[] 
     }
 
 }
-cCasilla cCasilla::operator = (cCasilla casilla){
+void cCasilla::operator = (cCasilla casilla){
     cambiarPosicion=casilla.cambiarPosicion;
     detenerTurno=casilla.detenerTurno;
     seguirTurno=casilla.seguirTurno;
@@ -46,5 +46,5 @@ bool cCasilla::getGanadora(){
 }
 
 int cCasilla::getPosiciones(){
-    return posiciones;
+    return posiciones[42];
 }

@@ -23,7 +23,7 @@ void cPersonaje::setTurnosDetenido(int num){
 }
 
 int cPersonaje::tirarDado(){
-    int random= rand()%6;
+    int random= (rand()%6)+1;
     return random;
 }
 void cPersonaje::moverPosicion(){

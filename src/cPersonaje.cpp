@@ -15,11 +15,8 @@ cPersonaje::cPersonaje(string name){
 int cPersonaje::getPosicion(){
     return posicion;
 }
-int cPersonaje::getNombre(){
+string cPersonaje::getNombre(){
 	return nombre;
-}
-int cPersonaje::getNombre(){
-	return turnosDetenido;
 }
 void cPersonaje::setTurnosDetenido(int num){
 	turnosDetenido=num;
@@ -27,6 +24,7 @@ void cPersonaje::setTurnosDetenido(int num){
 
 int cPersonaje::tirarDado(){
     int random= rand()%6;
+    return random;
 }
 void cPersonaje::moverPosicion(){
     int random=this->tirarDado();

@@ -1,3 +1,4 @@
+
 #include "cTablero.h"
 #include "cPersonaje.h"
 
@@ -6,12 +7,12 @@ int main() {
 	cout << "Introduzca el numero de personajes: "<< endl;
 	cin >> numPersonajes;
 	if(numPersonajes==0){
-		cout<<"No se puede jugar con 0 jugadores"; 
+		cout<<"No se puede jugar con 0 jugadores";
 	}
 	//EMPIEZA EL JUEGO
 	else{
 		cPersonaje *personajes[numPersonajes];
-		string nombre='';
+		string nombre;
 		cCasilla casilla;
 		for (int i=0; i>numPersonajes; i++){
 			cout << "Introduzca nombre para el personaje "<<i<<" :"<< endl;
@@ -38,7 +39,7 @@ int main() {
 			cout<<"Ahoras estas en la posicion: "<< posicion <<endl;
 
 			//Empieza la busqueda de colisiones con las casillas
-			casilla = tablero.buscarCasilla(posicion);
+			casilla = tablero.buscarPosicion(posicion);
 			int cambioPosicion = casilla.getCambiarPosicion();
     		int detener=casilla.getDetenerTurno();
     		int seguir=casilla.getSeguirTurno();
@@ -55,7 +56,7 @@ int main() {
     		}
     		if(detener!=0){
     			personajes[turno]->setTurnosDetenido(detener);
-    			cout<<"Estas detenido "<<detenido<< " turnos."<<endl;
+    			cout<<"Estas detenido "<<detener<< " turnos."<<endl;
     		}
     		if(cambioPosicion!=0){
     			personajes[turno]->setPosicion(cambioPosicion);
@@ -64,11 +65,13 @@ int main() {
 
     		//Cambio de turno al siguiente jugador
     		turno++;
-    		if(turno=>numPersonajes)
+    		if(turno>=numPersonajes)
     			turno=0;
     		else turno++;
 
 		}while(input!=0);
 	}
+	cin.get();
+	cout << "Adios!"<<endl;
 	return 0;
 }

@@ -13,11 +13,12 @@ private:
 
 public:
     void operator = (cCasilla);
-    int getcambiarPosicion();
+    int getCambiarPosicion();
     int getDetenerTurno();
     bool getSeguirTurno();
     bool getGanadora();
-    int getPosiciones();
+    int* getPosiciones();
     cCasilla();
     cCasilla(int, int, bool, bool, int*);
 };
+#endif //CCASILLA_H_

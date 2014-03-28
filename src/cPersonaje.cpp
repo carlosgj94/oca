@@ -7,19 +7,19 @@ cPersonaje::cPersonaje()
 }
 
 cPersonaje::cPersonaje(string name){
-	posicion=0;
-	nombre=name;
-	turnosDetenido=0;
+    posicion=0;
+    nombre=name;
+    turnosDetenido=0;
 }
 
 int cPersonaje::getPosicion(){
     return posicion;
 }
 string cPersonaje::getNombre(){
-	return nombre;
+    return nombre;
 }
 void cPersonaje::setTurnosDetenido(int num){
-	turnosDetenido=num;
+    turnosDetenido+=num;
 }
 
 int cPersonaje::tirarDado(){
@@ -33,5 +33,5 @@ void cPersonaje::moverPosicion(){
 }
 
 void cPersonaje::setPosicion(int num){
-	posicion+=num;
+    posicion+=num;
 }

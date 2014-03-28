@@ -1,23 +1,25 @@
-
+#include <iostream>
 #include "cTablero.h"
 #include "cPersonaje.h"
 
 int main() {
-	int numPersonajes = 0;
+	int numPersonajes;
 	cout << "Introduzca el numero de personajes: "<< endl;
 	cin >> numPersonajes;
 	if(numPersonajes==0){
-		cout<<"No se puede jugar con 0 jugadores";
+		cout<<"No se puede jugar con 0 jugadores "<<endl;
 	}
 	//EMPIEZA EL JUEGO
 	else{
 		cPersonaje *personajes[numPersonajes];
 		string nombre;
 		cCasilla casilla;
-		for (int i=0; i>numPersonajes; i++){
-			cout << "Introduzca nombre para el personaje "<<i<<" :"<< endl;
+		int i;
+		for (i=0; i<numPersonajes; i++){
+			cout << "Introduzca nombre para el personaje "<<i<<" : ";
 			cin>>nombre;
 			personajes[i]= new cPersonaje(nombre);
+			cout<<"Hola jugador "<< personajes[i]->getNombre()<<" eres el numero "<< i<<endl;
 		}
 
 		//EMPIEZA LA PARTE DE LA CREACION DEL TABLERO
@@ -36,36 +38,44 @@ int main() {
 			cin.get();
 			personajes[turno]->moverPosicion();
 			posicion = personajes[turno]->getPosicion();
-			cout<<"Ahoras estas en la posicion: "<< posicion <<endl;
+			if(posicion>63){
+                posicion=63+(63-posicion);
+                personajes[turno]->setPosicion(posicion);
+			}
+			cout<<"Ahoras estas en la posicion: -------------->"<< posicion <<endl;
 
 			//Empieza la busqueda de colisiones con las casillas
 			casilla = tablero.buscarPosicion(posicion);
 			int cambioPosicion = casilla.getCambiarPosicion();
     		int detener=casilla.getDetenerTurno();
-    		int seguir=casilla.getSeguirTurno();
-    		int ganar=casilla.getGanadora();
+    		bool seguir=casilla.getSeguirTurno();
+    		bool ganar=casilla.getGanadora();
 
     		if(ganar==true){
     			cout<<"El jugador "<< personajes[turno]->getNombre() << " ha ganado, mis congratulaciones."<<endl;
-    			cout<<"La partida ha durado: "<<input<<" turnos"<<endl;
+    			cout<<"La partida ha durado: "<<input/numPersonajes<<" turnos"<<endl;
     			input=0;
     		}
     		if(seguir==true){
     			cout<<"Te vuelve a tocar "<<personajes[turno]->getNombre()<<endl;
-    			turno--;
+    			if(turno==0)
+                    turno=numPersonajes-1;
+                else turno--;
     		}
     		if(detener!=0){
     			personajes[turno]->setTurnosDetenido(detener);
     			cout<<"Estas detenido "<<detener<< " turnos."<<endl;
     		}
     		if(cambioPosicion!=0){
+                if(posicion==53)
+                    cambioPosicion=-27;
     			personajes[turno]->setPosicion(cambioPosicion);
     			cout<<"Has sido movido a la casilla "<<  personajes[turno]->getPosicion()<<endl;
     		}
 
     		//Cambio de turno al siguiente jugador
-    		turno++;
-    		if(turno>=numPersonajes)
+
+    		if(turno>=numPersonajes-1)
     			turno=0;
     		else turno++;
 

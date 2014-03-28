@@ -78,20 +78,55 @@ void cTablero::casillaFinal(){
 }
 
 cCasilla cTablero::buscarPosicion(int posicionActual){
-    int encontrado=0;
+    bool encontrado=false;
     int i=0;
     do{
-        if(posicionActual==casillas[i]->getPosiciones()){
-            encontrado=1;
+        int *puntero = casillas[i]->getPosiciones();
+        bool esta=false;
+        int j=0;
+        while(j<42 && esta==false && puntero[j]!=0){
+            //cout<<puntero[j]<<" y "<< posicionActual<<endl;
+            if(puntero[j]==posicionActual){
+                esta=true;
+            }
+            j++;
+        }
+        if(esta==true){
+            encontrado=true;
             i--;
         }
         i++;
-    } while (encontrado!=0 && i<10);
-    int cambioPosicion = casillas[i]->getCambiarPosicion();
-    int detener=casillas[i]->getDetenerTurno();
-    int seguir=casillas[i]->getSeguirTurno();
-    int ganar=casillas[i]->getGanadora();
-    int posiciones[1]= {posicionActual};
-    cCasilla casillaActual(cambioPosicion, detener, seguir, ganar, posiciones);
-    return casillaActual;
+    }while(encontrado==false && i<10);
+    if(i>=10){
+        int pos=63+(63-posicionActual);
+        cout<<"Tu posicion ahora es: "<< pos<<endl;
+        return buscarPosicion(pos);
+    }
+    else{
+        if(i==1){//si el resto de j es par entonces sumar 4, sino 5...
+            cout<<"--> De oca a oca y tiro porque me toca <--"<<endl;
+        }
+        if(i==2)
+            cout<<"--> De puente a puente y tiro porque me lleva la corriente <--"<<endl;
+        if(i==3)
+            cout<<"--> La Posadaaa! <--"<<endl;
+        if(i==4)
+            cout<<"--> Proxima estacion: El Pozo <--"<<endl;
+        if(i==5)
+            cout<<"--> El Laberinto! <--"<<endl;
+        if(i==6)
+            cout<<"--> A la carcel, a saber que habras hecho... <--"<<endl;
+        if(i==7)
+            cout<<"--> De dado a dado y tiro porque me sale del ra** <--"<<endl;
+        if(i==8)
+            cout<<"--> Con la muerte no se juega, te dejo vivo pero vuelves al principio <--"<<endl;
+        int cambioPosicion = casillas[i]->getCambiarPosicion();
+        int detener=casillas[i]->getDetenerTurno();
+        bool seguir=casillas[i]->getSeguirTurno();
+        bool ganar=casillas[i]->getGanadora();
+        int posiciones[1]= {posicionActual};
+        cCasilla casillaActual(cambioPosicion, detener, seguir, ganar, posiciones);
+        return casillaActual;
+    }
 }
+
